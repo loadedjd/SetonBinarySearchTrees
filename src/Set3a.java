@@ -1,6 +1,7 @@
 import java.util.Iterator;
 
 import components.binarytree.BinaryTree;
+import components.binarytree.BinaryTree1;
 import components.set.Set;
 import components.set.SetSecondary;
 
@@ -137,7 +138,7 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
      */
     private void createNewRep() {
 
-        // TODO - fill in body
+        this.tree = new BinaryTree1<>();
 
     }
 
@@ -150,7 +151,7 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
      */
     public Set3a() {
 
-        // TODO - fill in body
+        this.createNewRep();
 
     }
 
@@ -199,8 +200,19 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         assert x != null : "Violation of: x is not null";
         assert !this.contains(x) : "Violation of: x is not in this";
 
-        // TODO - fill in body
+        T root = this.tree.root();
+        BinaryTree<T> left = new BinaryTree1<>();
+        BinaryTree<T> right = new BinaryTree1<>();
+        
+        this.tree.disassemble(left, right);
 
+        if (x.compareTo(root) > 0) {
+        		
+        }
+        
+        else {
+        		
+        }
     }
 
     @Override
