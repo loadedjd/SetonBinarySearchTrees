@@ -214,7 +214,7 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
      */
     private void createNewRep() {
 
-        this.tree = new BinaryTree1<>();
+        this.tree = new BinaryTree1<T>();
 
     }
 
@@ -226,9 +226,7 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
      * No-argument constructor.
      */
     public Set3a() {
-
         this.createNewRep();
-
     }
 
     /*

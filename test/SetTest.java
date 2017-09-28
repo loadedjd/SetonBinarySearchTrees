@@ -7,7 +7,7 @@ import components.set.Set;
 /**
  * JUnit test fixture for {@code Set<String>}'s constructor and kernel methods.
  *
- * @author Put your name here
+ * @author Jared Williams and Jacob Hoylman
  *
  */
 public abstract class SetTest {
@@ -75,7 +75,7 @@ public abstract class SetTest {
         Set<String> s1 = this.createFromArgsTest();
         Set<String> s1Expected = this.createFromArgsRef();
 
-        assertEquals(s1, s1Expected);
+        assertEquals(s1Expected, s1);
     }
 
     @Test
@@ -83,7 +83,7 @@ public abstract class SetTest {
         Set<String> s1 = this.createFromArgsTest("1", "2", "3");
         Set<String> s1Expected = this.createFromArgsRef("1", "2", "3");
 
-        assertEquals(s1, s1Expected);
+        assertEquals(s1Expected, s1);
     }
 
     @Test
@@ -93,8 +93,8 @@ public abstract class SetTest {
 
         String temp = s1.remove("1");
 
-        assertEquals(temp, "1");
-        assertEquals(s1, s1Expected);
+        assertEquals("1", temp);
+        assertEquals(s1Expected, s1);
     }
 
     @Test
@@ -104,8 +104,8 @@ public abstract class SetTest {
 
         String temp = s1.remove("1");
 
-        assertEquals(temp, "1");
-        assertEquals(s1, s1Expected);
+        assertEquals("1", temp);
+        assertEquals(s1Expected, s1);
     }
 
     @Test
@@ -114,8 +114,8 @@ public abstract class SetTest {
 
         String temp = s1.removeAny();
 
-        assertEquals(s1.contains(temp), false);
-        assertEquals(s1.size(), 0);
+        assertEquals(false, s1.contains(temp));
+        assertEquals(0, s1.size());
     }
 
     @Test
@@ -124,8 +124,8 @@ public abstract class SetTest {
 
         String temp = s1.removeAny();
 
-        assertEquals(s1.contains(temp), false);
-        assertEquals(s1.size(), 2);
+        assertEquals(false, s1.contains(temp));
+        assertEquals(2, s1.size());
     }
 
     @Test
@@ -133,8 +133,8 @@ public abstract class SetTest {
         Set<String> s1 = this.createFromArgsTest("1", "2", "3");
         Set<String> s1Expected = this.createFromArgsRef("1", "2", "3");
 
-        assertEquals(s1, s1Expected);
-        assertEquals(s1.contains("4"), false);
+        assertEquals(s1Expected, s1);
+        assertEquals(false, s1.contains("4"));
     }
 
     @Test
@@ -142,8 +142,8 @@ public abstract class SetTest {
         Set<String> s1 = this.createFromArgsTest("1", "2", "3");
         Set<String> s1Expected = this.createFromArgsRef("1", "2", "3");
 
-        assertEquals(s1, s1Expected);
-        assertEquals(s1.contains("1"), true);
+        assertEquals(s1Expected, s1);
+        assertEquals(true, s1.contains("1"));
     }
 
     @Test
@@ -153,7 +153,7 @@ public abstract class SetTest {
 
         s1.add("1");
 
-        assertEquals(s1, s1Expected);
+        assertEquals(s1Expected, s1);
     }
 
     @Test
@@ -163,7 +163,7 @@ public abstract class SetTest {
 
         s1.add("4");
 
-        assertEquals(s1, s1Expected);
+        assertEquals(s1Expected, s1);
     }
 
     @Test
@@ -171,8 +171,8 @@ public abstract class SetTest {
         Set<String> s1 = this.createFromArgsTest();
         Set<String> s1Expected = this.createFromArgsRef();
 
-        assertEquals(s1.size(), 0);
-        assertEquals(s1, s1Expected);
+        assertEquals(0, s1.size());
+        assertEquals(s1Expected, s1);
     }
 
     @Test
@@ -180,8 +180,8 @@ public abstract class SetTest {
         Set<String> s1 = this.createFromArgsTest("1", "2", "3");
         Set<String> s1Expected = this.createFromArgsRef("1", "2", "3");
 
-        assertEquals(s1.size(), 3);
-        assertEquals(s1, s1Expected);
+        assertEquals(3, s1.size());
+        assertEquals(s1Expected, s1);
     }
 
 }
