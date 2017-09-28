@@ -132,10 +132,29 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
     private static <T> T removeSmallest(BinaryTree<T> t) {
         assert t != null : "Violation of: t is not null";
 
-        // TODO - fill in body
+        T smallest;
 
-        // This line added just to make the component compilable.
-        return null;
+        BinaryTree<T> left = t.newInstance();
+        BinaryTree<T> right = t.newInstance();
+        T root = t.disassemble(left, right);
+
+        if (left.size() > 0) {
+            smallest = removeSmallest(left);
+        } else {
+            smallest = t.root();
+
+            BinaryTree<T> newLeft = t.newInstance();
+            BinaryTree<T> newRight = t.newInstance();
+            T newRoot = right.disassemble(newLeft, newRight);
+
+            left.transferFrom(newLeft);
+            right.transferFrom(newRight);
+            root = newRoot;
+        }
+
+        t.assemble(root, left, right);
+
+        return smallest;
     }
 
     /**
@@ -161,10 +180,33 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         assert t != null : "Violation of: t is not null";
         assert x != null : "Violation of: x is not null";
 
-        // TODO - fill in body
+        T temp;
 
-        // This line added just to make the component compilable.
-        return null;
+        BinaryTree<T> left = t.newInstance();
+        BinaryTree<T> right = t.newInstance();
+        T root = t.disassemble(left, right);
+
+        if (root.compareTo(x) < 0) {
+            temp = removeFromTree(left, x);
+        } else if (root.compareTo(x) > 0) {
+            temp = removeFromTree(right, x);
+        } else {
+            temp = root;
+            if (right.size() > 0) {
+                t.replaceRoot(removeSmallest(right));
+            } else {
+                BinaryTree<T> newLeft = t.newInstance();
+                BinaryTree<T> newRight = t.newInstance();
+                T newRoot = left.disassemble(newLeft, newRight);
+
+                left.transferFrom(newLeft);
+                right.transferFrom(newRight);
+                root = newRoot;
+            }
+        }
+        t.assemble(root, left, right);
+
+        return temp;
     }
 
     /**
