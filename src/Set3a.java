@@ -51,10 +51,27 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         assert t != null : "Violation of: t is not null";
         assert x != null : "Violation of: x is not null";
 
-        // TODO - fill in body
+        boolean isIn = false;
 
-        // This line added just to make the component compilable.
-        return false;
+        BinaryTree<T> left = t.newInstance();
+        BinaryTree<T> right = t.newInstance();
+        T root = t.disassemble(left, right);
+
+        if (root.compareTo(x) < 0) {
+            if (left.size() > 0) {
+                isIn = isInTree(left, x);
+            }
+        } else if (root.compareTo(x) > 0) {
+            if (right.size() > 0) {
+                isIn = isInTree(right, x);
+            }
+        } else {
+            isIn = true;
+        }
+
+        t.assemble(root, left, right);
+
+        return isIn;
     }
 
     /**
@@ -76,8 +93,25 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         assert t != null : "Violation of: t is not null";
         assert x != null : "Violation of: x is not null";
 
-        // TODO - fill in body
+        BinaryTree<T> left = t.newInstance();
+        BinaryTree<T> right = t.newInstance();
+        T root = t.disassemble(left, right);
 
+        if (root.compareTo(x) < 0) {
+            if (left.size() > 0) {
+                insertInTree(left, x);
+            } else {
+                left.replaceRoot(x);
+            }
+        } else {
+            if (right.size() > 0) {
+                insertInTree(right, x);
+            } else {
+                right.replaceRoot(x);
+            }
+        }
+
+        t.assemble(root, left, right);
     }
 
     /**
@@ -203,15 +237,15 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         T root = this.tree.root();
         BinaryTree<T> left = new BinaryTree1<>();
         BinaryTree<T> right = new BinaryTree1<>();
-        
+
         this.tree.disassemble(left, right);
 
         if (x.compareTo(root) > 0) {
-        		
+
         }
-        
+
         else {
-        		
+
         }
     }
 
